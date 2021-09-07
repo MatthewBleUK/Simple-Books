@@ -16,7 +16,7 @@ class DashboardController extends Controller
     public function index ()
     {   
         //dd(auth()->user()->transactions);   //Uses collection  -> helps manipulate lists of data
-       
+
        $transactions = Transaction::get();
        
         return view('dashboard', [
