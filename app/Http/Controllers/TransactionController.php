@@ -10,7 +10,7 @@ class TransactionController extends Controller
     public function store(Request $request) 
     {
         // Validate
-
+       
         // Store
         $request->user()->transactions()->create([
             'name' => $request->name,
@@ -23,4 +23,5 @@ class TransactionController extends Controller
 
         return back();
     }
+    
 }
