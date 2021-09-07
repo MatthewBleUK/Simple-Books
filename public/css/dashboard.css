@@ -99,6 +99,20 @@ html, body {
     line-height: 40px;
 }
 
+#nav-bar .user-id {
+    font-size: 13px;
+    font-weight: 400;
+    padding-right: 3px;
+    position: relative;
+    top: 1px;
+}
+
+#nav-bar .white-arrow {
+    position: relative;
+    top: -1px;
+} 
+
+
 /* Transaction Stats */
 
 #transaction-stats {
@@ -211,6 +225,13 @@ html, body {
     padding: 10px 8px;
 }
 
+#transactions table .no-transactions td {
+    text-align: left;
+    font-size: 14px;
+    position: inherit;
+    padding-left: 0;
+}
+
 /*#transactions table tr:nth-child(even) {
     background-color: #dddddd;
 }*/
@@ -273,8 +294,22 @@ html, body {
     font-size: 0.8em;
 }
 
-.sidenav input {
-    margin-top: 3px;
+.sidenav input, .sidenav select {
+   margin-top: 3px;
+    padding: 8px 10px;
+    width: 154px;
+    color: #000;
+}
+
+.sidenav select {
+    width: 178px;
+
+}
+
+.sidenav textarea {
+    width: 359px;
+    color: #000;
+    padding: 10px;
 }
 
 .sidenav form {
@@ -290,13 +325,32 @@ html, body {
 
 .sidenav form .input-container {
     display: inline-block;
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 .sidenav form .form-buttons {
     display: block;
     margin-top: 15px;
 } 
+
+.sidenav form .form-buttons .button {
+    border: 0;
+    padding: 8px 10px;
+    font-size: 13px;
+    margin-right: 10px;
+    background: #f0f0f0 !important;
+    color: #000;
+}
+
+#mySidenav .row {
+    margin-bottom: 20px;
+}
+
+#mySidenav .date {
+    padding: 6px 10px;
+    cursor: pointer;
+    color: #7c7c7c;
+}
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
@@ -308,3 +362,66 @@ html, body {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+
+/* Drop down menu */
+/* Dropdown Button */
+.dropbtn {
+    background-color: #363636;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    top: -2px;
+    padding: 0px 10px;
+}
+
+.dropbtn:hover {
+    background-color: #403f3f;
+}
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 6px 16px;
+    font-size: 14px;
+    text-decoration: none;
+    display: block;
+    font-weight: 400;
+  }
+
+  .dropdown-content .sign-out-btn {
+    color: black;
+    border: 0;
+    cursor: pointer;
+    padding: 6px 16px;
+    line-height: 40px;
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+  }
+  .dropdown-content .sign-out-btn:hover {
+    background-color: #ddd
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd}
+  
+  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+  .show {display:block;}

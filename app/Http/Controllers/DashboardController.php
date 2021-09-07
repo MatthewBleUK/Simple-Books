@@ -17,7 +17,8 @@ class DashboardController extends Controller
     {   
         //dd(auth()->user()->transactions);   //Uses collection  -> helps manipulate lists of data
 
-       $transactions = Transaction::get();
+       $transactions = Transaction::orderBy('date', 'desc')->get()->where('user_id', auth()->user()->id);
+       
        
         return view('dashboard', [
             'transactions' => $transactions

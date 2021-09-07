@@ -29,7 +29,7 @@
 
                         <div class="input-container">
                             <label for="date">Date: </label><br>
-                            <input type="date" name="date" placeholder="Enter a date">
+                            <input type="date" name="date" placeholder="Enter a date" class="date">
                         </div>
                     </div>
 
@@ -42,26 +42,25 @@
                         <div class="input-container">
                             <label for="category">Category: </label><br>
                             <select name="category">
-                                <option value="income">Income</option>
-                                <option value="expense">Expense</option>
-                                <option value="personal">Personal</option>
+                                <option value="Income">Income</option>
+                                <option value="Expense">Expense</option>
                             </select>
                         </div>
                     </div>
 
-                    <div>
+                    <div class="row">
                         <label for="tags">Tags: </label><br>
                         <input type="text" name="tags" placeholder="Enter a tag">
                     </div>
                     
                     <div class="row">
                         <label for="notes">Notes: </label>
-                        <textarea rows="4" cols="50" name="notes"></textarea>
+                        <textarea rows="4" cols="50" name="notes" placeholder="Enter a note"></textarea>
                     </div>
                     
-                    <div class="form-buttons">
-                        <button type="submit">Add Transaction</button>
-                        <a onclick="closeNav()">Cancel</a>
+                    <div class="form-buttons row">
+                        <button type="submit" class="button">Add Transaction</button>
+                        <a onclick="closeNav()" class="button">Cancel</a>
                     </div>
                 </form>
                 
@@ -75,14 +74,25 @@
             <div id="nav-bar">
                 <div class="container">
                     <ul class="float-left">
-                        <li class="logo"><span>Sole Trader Books</span></li>
+                        <li class="logo"><span>Simple Books</span></li>
                     </ul>
         
                     <ul class="float-right">
-                        <li class="user">
-                            <span>{{ auth()->user()->name }}</span>
-                            <i class="white-arrow down"></i>
-                        </li>
+
+                        <div class="user dropdown">
+                            <li class="dropbtn"><span class="user-id">{{ auth()->user()->name }}</span> <i class="white-arrow down"></i></li>
+                         
+                            
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="#">Account Settings</a>
+                                
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="sign-out-btn">Sign Out</button>
+                                </form>
+                            </div>
+                        </div>
+
                     </ul>
                 </div>
             </div>
@@ -92,17 +102,17 @@
                     <span class="title">Transactions</span>
                     
                     <div class="business-profits">
-                        <span class="value">£1143.54</span>
+                        <span class="value">£0</span>
                         <span class="value-title">Profits / Losses</span>
                     </div>
                 
                     <div class="business-incomes">
-                        <span class="value">£1221.54</span>
+                        <span class="value">£0</span>
                         <span class="value-title">Business Income</span>
                     </div>
                     
                     <div class="business-expenses">
-                        <span class="value">-£78</span>
+                        <span class="value">-£0</span>
                         <span class="value-title">Business Expenses</span>
                     </div>
                 </div>
@@ -164,7 +174,9 @@
                                 </tr>
                             @endforeach
                         @else
-                            <p>There are no transactions</p>
+                            <tr class="no-transactions">
+                                <td>There are no transactions</td>
+                            </tr>
                         @endif                        
                     </table>
                 </div>
@@ -178,10 +190,6 @@
                 </div>
             </div>
             
-            <form action="{{ route('logout') }}" method="post">
-                @csrf
-                <button type="submit">Logout</button>
-            </form>
         </div>
 
         <script src="{{ asset('js/jquery-3.6.0.js') }}"></script>

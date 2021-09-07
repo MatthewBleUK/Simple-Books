@@ -35,3 +35,21 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     //document.getElementById("main").style.marginRight = "0";
 }
+
+
+// Drop down menu
+
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+
+  
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function(event) {
+    if(event.target.matches('#nav-bar .dropbtn') || event.target.matches('#nav-bar .user-id') || event.target.matches('#nav-bar .white-arrow')) {
+        document.getElementById("myDropdown").classList.toggle("show");
+    } else {
+        var element = document.getElementById("myDropdown");
+        element.classList.remove('show');
+    }    
+
+  }
