@@ -14,6 +14,9 @@ class Transaction extends Model
      *
      * @var string[]
      */
+
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'name',
         'date',
@@ -22,4 +25,5 @@ class Transaction extends Model
         'tags',
         'notes',
     ];
+
 }
