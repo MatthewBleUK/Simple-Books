@@ -225,11 +225,12 @@ html, body {
     padding: 10px 8px;
 }
 
-#transactions table .no-transactions td {
+ #no-transactions {
     text-align: left;
     font-size: 14px;
-    position: inherit;
-    padding-left: 0;
+    padding-top: 10px;
+    position: relative;
+    display: block;
 }
 
 /*#transactions table tr:nth-child(even) {
@@ -258,6 +259,9 @@ html, body {
 
 
 /* Utility Bar */
+#utility-bar {
+    margin-bottom: 40px;
+}
 
 #utility-bar .container {
     background: #fff;
@@ -295,25 +299,30 @@ html, body {
 }
 
 .sidenav input, .sidenav select {
-   margin-top: 3px;
+    margin-top: 3px;
     padding: 8px 10px;
-    width: 154px;
+    width: 150px;
+
     color: #000;
+    border: none;
 }
 
 .sidenav select {
-    width: 178px;
-
+    width: 170px;
+    border-right: solid 11px #fff;
 }
 
 .sidenav textarea {
-    width: 359px;
+    width: 360px;
     color: #000;
     padding: 10px;
+    font-family: 'Roboto';
+    border: none;
+    margin-top: 3px;
 }
 
 .sidenav form {
-    padding: 20px 0px;
+    padding: 25px 0px;
 }
 
 .sidenav form row {
@@ -349,7 +358,7 @@ html, body {
 #mySidenav .date {
     padding: 6px 10px;
     cursor: pointer;
-    color: #7c7c7c;
+    font-family: 'Roboto';
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -425,3 +434,21 @@ html, body {
   
   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
   .show {display:block;}
+
+.border-red {
+    border: 2px solid red !important;
+}
+
+.text-red {
+    color: red !important;
+}
+
+.name-error, .date-error, .amount-error, .tags-error {
+    position: absolute;
+    min-width: 180px;
+    font-size: 0.8em;
+}
+
+#transaction-stats .count, #transaction-stats .minus, #transaction-stats .sign, #transaction-stats .total-amount{
+    display: inline-block;
+}

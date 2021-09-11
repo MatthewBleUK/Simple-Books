@@ -1,9 +1,9 @@
 .border-red {
-    border: 3px solid red;
+    border: 3px solid red !important;
 }
 
 .text-red {
-    color: red;
+    color: red !important; 
 }
 
 

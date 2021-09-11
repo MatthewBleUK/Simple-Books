@@ -28,8 +28,10 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
-Route::post('/transaction', [TransactionController::class, 'store'])->name('store');
+Route::post('/add', [TransactionController::class, 'store']);
+Route::delete('/transaction/{id}', [TransactionController::class, 'delete']);
 
-Route::get('/', function () {
+Route::get('/', function () 
+{
     return view('app');
 });

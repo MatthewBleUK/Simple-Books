@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Dashboard</title>
 
@@ -19,29 +20,55 @@
             <div class="container">
                 <h3 class="title">Add a Transaction</h3>
 
-                <form action="{{ route('store') }}" method="post">
+                <form method="post" id="store-transactions">
                     @csrf
                     <div class="row">
                         <div class="input-container">
                             <label for="name">Transaction Name: </label><br>
-                            <input type="text" name="name" placeholder="Enter a transaction name">
+                            <input type="text" name="name" class="@error('name') border-red @enderror name" placeholder="Enter a transaction name">
+
+                            <div class="text-red">
+                                @error('name')
+                                    {{ $message }}
+                                @enderror
+
+                                <span class="name-error"></span>
+                            </div>
                         </div>
 
                         <div class="input-container">
                             <label for="date">Date: </label><br>
-                            <input type="date" name="date" placeholder="Enter a date" class="date">
+                            <input type="date" name="date" placeholder="Enter a date" class="date @error('date') border-red @enderror">
+                            
+                            <div class="text-red">
+                                @error('date')
+                                    {{ $message }}
+                                @enderror
+
+                                <span class="date-error"></span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-container">
                             <label for="amount">Amount: </label><br>
-                            <input type="text" name="amount" placeholder="Enter a amount">
+                            <input type="text" name="amount" class="@error('amount') border-red @enderror amount" placeholder="Enter a amount">
+
+                           
+                                <div class="text-red">
+                                    @error('amount')
+                                        {{ $message }}
+                                    @enderror
+
+                                    <span class="amount-error"></span>
+                                </div>
+                            
                         </div>
                         
                         <div class="input-container">
                             <label for="category">Category: </label><br>
-                            <select name="category">
+                            <select name="category" class="category">
                                 <option value="Income">Income</option>
                                 <option value="Expense">Expense</option>
                             </select>
@@ -50,12 +77,20 @@
 
                     <div class="row">
                         <label for="tags">Tags: </label><br>
-                        <input type="text" name="tags" placeholder="Enter a tag">
+                        <input type="text" name="tags" class="@error('tags') border-red @enderror tags" placeholder="Enter a tag">
+
+                        <div class="text-red">
+                            @error('tags')
+                                {{ $message }}
+                            @enderror
+
+                            <span class="tags-error"></span>
+                        </div>
                     </div>
                     
                     <div class="row">
                         <label for="notes">Notes: </label>
-                        <textarea rows="4" cols="50" name="notes" placeholder="Enter a note"></textarea>
+                        <textarea rows="4" cols="50" name="notes" class="notes" placeholder="Enter a note"></textarea>
                     </div>
                     
                     <div class="form-buttons row">
@@ -102,39 +137,20 @@
                     <span class="title">Transactions</span>
                     
                     <div class="business-profits">
-                        <span class="value">£0</span>
+                        
+                        <span class="value"><span class="minus">{{ $minus }}</span><span class="sign">£</span><span class="total-amount count" id="total">{{ $total }}</span></span>
                         <span class="value-title">Profits / Losses</span>
                     </div>
                 
                     <div class="business-incomes">
-                        <span class="value">£0</span>
+                        <span class="value">£<span class="count" id="income">{{ $income }}</span></span>
                         <span class="value-title">Business Income</span>
                     </div>
                     
                     <div class="business-expenses">
-                        <span class="value">-£0</span>
+                        <span class="value">£<span class="count" id="expenses">{{ $expenses }}</span></span>
                         <span class="value-title">Business Expenses</span>
                     </div>
-                </div>
-            </div>
-        
-            <div id="add-transactions-box">
-                <div class="container">
-                    <span>Add a Transaction:</span>
-                    <form action="">
-                        <label for="name">Name:</label>
-                        <input type="text" placeholder="Name" name="name"><br>
-                        <label for="amount">Amount:</label>
-                        <input type="text" placeholder="Amount" name="amount"><br>
-                        <label for="date">Date:</label>
-                        <input type="date" name="date"><br>
-                        <label for="category">Category:</label>
-                        <input type="text" placeholder="Category" name="category"><br>
-                        <label for="tags">Tags:</label>
-                        <input type="text" placeholder="Tags" name="tags"><br>
-        
-                        <input type="submit" value="Add Transaction">
-                    </form>
                 </div>
             </div>
         
@@ -143,8 +159,9 @@
                     <input type="button" value="Add Transaction" class="button" onclick="openNav()">
         
                     <div id="edit-buttons">
-                        <input type="button" value="Edit Transaction" class="button">
-                        <input type="button" value="Delete Transaction" class="button">
+                        <!--<input type="button" value="Edit Transaction" class="button">-->
+                        
+                        <button data-token="{{ csrf_token() }}" class="button delete-button">Delete Transaction</button>
                     </div>
                 </div>
             </div>
@@ -153,7 +170,7 @@
                 <div class="container">
                     <table id="transactions-table">
                         <tr>
-                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" id="rootbox"></td>
                             <th>Date</th>
                             <th>Transaction</th>
                             <th>Amount</th>
@@ -163,25 +180,26 @@
         
                         @if ($transactions->count()) 
                             @foreach($transactions as $transaction)
-                                <tr>
+                                <tr id={{ $transaction->id }}>
                                     <td><input type="checkbox"></td>
                                     <td contenteditable='true'>{{ $transaction->date }}</td>
                                     <td contenteditable='true'>{{ $transaction->name }}</td>
-                                    <td contenteditable='true'>{{ $transaction->amount }}</td>
+                                    <td contenteditable='true'>@if($transaction->category == 'Expense')<span>-</span>@endif<span>£</span>{{ $transaction->amount }}</td>
                                     <td contenteditable='true'>{{ $transaction->category }}</td>
                                     <td contenteditable='true'>{{ $transaction->tags }}</td>
                                     <td onclick="openNav()"><i class="arrow right"></i></td>
                                 </tr>
-                            @endforeach
-                        @else
-                            <tr class="no-transactions">
-                                <td>There are no transactions</td>
-                            </tr>
-                        @endif                        
-                    </table>
+                            @endforeach     
+                        @endif
+                    </table>  
+                    @if ($transactions->count()) 
+                    @else    
+                        <span id="no-transactions">There are no transactions</span>
+                    @endif 
                 </div>
             </div>
-            
+
+                       
         
             <div id="utility-bar">
                 <div class="container">
@@ -193,6 +211,7 @@
         </div>
 
         <script src="{{ asset('js/jquery-3.6.0.js') }}"></script>
+        <script src="{{ asset('js/transactions.js') }}"></script>
         <script src="{{ asset('js/scripts.js') }}"></script>
     </body>
 </html>
