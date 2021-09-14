@@ -9,3 +9,21 @@ Simple books is a free tool designed for freelancers, sole traders, and small bu
 - Organise transactions by category and tags
 - Add attachments to each transaction
 - Export your transactions records to csv  
+
+Live Demo
+
+## Screenshots
+
+## Installation
+
+## Contributing
+
+## Credits
+
+## License
+This project is licensed under the GNU Affero General Public License v3.0.
+
+
+
+
+
