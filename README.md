@@ -1,6 +1,6 @@
 # ![alt text](https://github.com/MatthewBleUK/Simple-Books/blob/main/public/imgs/logo60x60.png)    Simple Books
 
-Simple books is a tool designed for freelancers, sole traders and small businesses to make book keeping much more efficent. 
+Simple books is a free tool designed for freelancers, sole traders, and small businesses to make bookkeeping much more efficent. 
 
 ## Key features
 
