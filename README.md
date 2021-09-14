@@ -1,6 +1,4 @@
-![alt text](https://github.com/MatthewBleUK/Simple-Books/blob/main/public/imgs/logo60x60.png)
-
-## About Laravel
+## ![alt text](https://github.com/MatthewBleUK/Simple-Books/blob/main/public/imgs/logo60x60.png) Simple Books
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
