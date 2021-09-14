@@ -1,6 +1,6 @@
 # ![alt text](https://github.com/MatthewBleUK/Simple-Books/blob/main/public/imgs/logo60x60.png)    Simple Books
 
-Simple books is an easy way to manage your finances from any web browser. 
+Simple books is an easy way for small businesses to keep on top of your finances. 
 
 ## Key features
 
