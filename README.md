@@ -6,4 +6,6 @@ Simple books is a free tool designed for freelancers, sole traders, and small bu
 
 - Self-hosted solution to managing your finance
 - Secure multi  account access
+- Organise transactions by category and tags
+- Add attachments to each transaction
 - Export your transactions records to csv  
