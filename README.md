@@ -1,4 +1,4 @@
-![alt text](https://github.com/MatthewBleUK/Simple-Books/blob/main/public/imgs/logo.png)
+![alt text](https://github.com/MatthewBleUK/Simple-Books/blob/main/public/imgs/logo60x60.png)
 
 ## About Laravel
 
