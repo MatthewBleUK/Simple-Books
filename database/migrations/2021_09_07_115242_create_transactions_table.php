@@ -21,8 +21,8 @@ class CreateTransactionsTable extends Migration
             $table->string('date');
             $table->string('amount');
             $table->string('category');
-            $table->string('tags');
-            $table->string('notes');
+            $table->string('tags')->nullable();
+            $table->string('notes')->nullable();
             $table->timestamps();
         });
     }

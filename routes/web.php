@@ -20,8 +20,8 @@ use App\Http\Controllers\TransactionController;
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/signup', [RegisterController::class, 'index'])->name('signup');
+Route::post('/signup', [RegisterController::class, 'signup']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
@@ -30,8 +30,13 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::post('/add', [TransactionController::class, 'store']);
 Route::delete('/transaction/{id}', [TransactionController::class, 'delete']);
+Route::get('/fetch/{id}', [TransactionController::class, 'fetch']);
+Route::post('/update', [TransactionController::class, 'update']);
+
+
+
 
 Route::get('/', function () 
 {
     return view('app');
-});
+})->name('/');

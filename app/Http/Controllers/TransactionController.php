@@ -58,5 +58,34 @@ class TransactionController extends Controller
         $transaction->delete();
         return response()->json(['success'=>'Record has been deleted']);
    }
+
+   public function fetch($id) 
+   {
+        $transaction = Transaction::find($id);
+
+        return response()->json([
+            'name'=>$transaction->name,
+            'date'=>$transaction->date,
+            'amount'=>$transaction->amount,
+            'category'=>$transaction->category,
+            'tags'=>$transaction->tags,
+            'notes'=>$transaction->notes
+        ]);
+   }
+
+   public function update(Request $request)
+   {
+        $date = Transaction::find($request->id);
+
+        $date->name=$request->name;
+        $date->date=$request->date;
+        $date->amount=$request->amount;
+        $date->category=$request->category;
+        $date->tags=$request->tags;
+        $date->notes=$request->notes;
+        $date->save();
+
+        return response()->json(['success'=>'Record has been updated']);
+   }
     
 }

@@ -17,10 +17,10 @@ class RegisterController extends Controller
 
     public function index() 
     {
-        return view('auth.register');
+        return view('auth.signup');
     }
 
-    public function register(Request $request) 
+    public function signup(Request $request) 
     {
         // validation
         $this->validate($request, [

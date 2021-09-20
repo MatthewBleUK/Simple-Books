@@ -17,8 +17,8 @@ class DashboardController extends Controller
     {   
         $transactions = Transaction::orderBy('date', 'desc')->get()->where('user_id', auth()->user()->id);
     
-        $income = $transactions->where('category', 'Income')->sum('amount');
-        $expenses = $transactions->where('category', 'Expense')->sum('amount');
+        $income = (float) $transactions->where('category', 'Income')->sum('amount');
+        $expenses = (float) $transactions->where('category', 'Expense')->sum('amount');
 
         $total = $income - $expenses;
         $minus = '';

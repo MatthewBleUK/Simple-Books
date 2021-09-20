@@ -302,7 +302,7 @@ html, body {
     margin-top: 3px;
     padding: 8px 10px;
     width: 150px;
-
+    font-size: 12px;
     color: #000;
     border: none;
 }
@@ -351,11 +351,11 @@ html, body {
     color: #000;
 }
 
-#mySidenav .row {
+.sidenav .row {
     margin-bottom: 20px;
 }
 
-#mySidenav .date {
+.sidenav .date {
     padding: 6px 10px;
     cursor: pointer;
     font-family: 'Roboto';
@@ -449,6 +449,6 @@ html, body {
     font-size: 0.8em;
 }
 
-#transaction-stats .count, #transaction-stats .minus, #transaction-stats .sign, #transaction-stats .total-amount{
+#transaction-stats .count, #transaction-stats #minus-sign, #transaction-stats .sign, #transaction-stats .total-amount{
     display: inline-block;
 }

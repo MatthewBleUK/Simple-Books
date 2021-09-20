@@ -13,6 +13,7 @@
 
     </head>
     <body class="antialiased">
+
         <h1> Login </h1>
 
         @if(session('status'))
@@ -50,8 +51,13 @@
                 <label for="remember">Remember me</label>
             </div>
 
-            <button type="submit">Login</button>
+            <button type="submit">Log in</button>
+
+
+            <!--<a href="{{ route('/') }}">Home</a>
+            <a href="{{ route('signup') }}">Create an account</a>-->
         </form>
-    </form>
+        
+        <span class="form-msg">Don't have an account? <a href="{{ route('signup') }}">Sign up</a></span>
     </body>
 </html>

@@ -16,7 +16,7 @@
     </head>
     <body class="antialiased">
 
-        <div id="mySidenav" class="sidenav">
+        <div id="addTransactionNav" class="sidenav">
             <div class="container">
                 <h3 class="title">Add a Transaction</h3>
 
@@ -95,7 +95,94 @@
                     
                     <div class="form-buttons row">
                         <button type="submit" class="button">Add Transaction</button>
-                        <a onclick="closeNav()" class="button">Cancel</a>
+                        <a onclick="closeAddTransaction()" class="button">Cancel</a>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+
+        <div id="editTransactionNav" class="sidenav">
+            <div class="container">
+                <h3 class="title">Edit a Transaction</h3>
+
+                <form method="post" id="edit-transactions">
+                    @csrf
+                    <input type="hidden" name="_transaction" id="transaction-id">
+                    <div class="row">
+                        <div class="input-container">
+                            <label for="name">Transaction Name: </label><br>
+                            <input type="text" name="name" class="@error('name') border-red @enderror name" placeholder="Enter a transaction name">
+
+                            <div class="text-red">
+                                @error('name')
+                                    {{ $message }}
+                                @enderror
+
+                                <span class="name-error"></span>
+                            </div>
+                        </div>
+
+                        <div class="input-container">
+                            <label for="date">Date: </label><br>
+                            <input type="date" name="date" placeholder="Enter a date" class="date @error('date') border-red @enderror">
+                            
+                            <div class="text-red">
+                                @error('date')
+                                    {{ $message }}
+                                @enderror
+
+                                <span class="date-error"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-container">
+                            <label for="amount">Amount: </label><br>
+                            <input type="text" name="amount" class="@error('amount') border-red @enderror amount" placeholder="Enter a amount">
+
+                           
+                                <div class="text-red">
+                                    @error('amount')
+                                        {{ $message }}
+                                    @enderror
+
+                                    <span class="amount-error"></span>
+                                </div>
+                            
+                        </div>
+                        
+                        <div class="input-container">
+                            <label for="category">Category: </label><br>
+                            <select name="category" class="category">
+                                <option value="Income">Income</option>
+                                <option value="Expense">Expense</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="tags">Tags: </label><br>
+                        <input type="text" name="tags" class="@error('tags') border-red @enderror tags" placeholder="Enter a tag">
+
+                        <div class="text-red">
+                            @error('tags')
+                                {{ $message }}
+                            @enderror
+
+                            <span class="tags-error"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <label for="notes">Notes: </label>
+                        <textarea rows="4" cols="50" name="notes" class="notes" placeholder="Enter a note"></textarea>
+                    </div>
+                    
+                    <div class="form-buttons row">
+                        <button type="submit" class="button">Edit Transaction</button>
+                        <a onclick="closeEditTransaction()" class="button">Cancel</a>
                     </div>
                 </form>
                 
@@ -138,7 +225,7 @@
                     
                     <div class="business-profits">
                         
-                        <span class="value"><span class="minus">{{ $minus }}</span><span class="sign">£</span><span class="total-amount count" id="total">{{ $total }}</span></span>
+                        <span class="value"><span id="minus-sign">{{ $minus }}</span><span class="sign">£</span><span class="total-amount count" id="total">{{ $total }}</span></span>
                         <span class="value-title">Profits / Losses</span>
                     </div>
                 
@@ -156,7 +243,7 @@
         
             <div id="transactions-edit-bar">
                 <div class="container">
-                    <input type="button" value="Add Transaction" class="button" onclick="openNav()">
+                    <input type="button" value="Add Transaction" class="button" onclick="openAddTransaction()">
         
                     <div id="edit-buttons">
                         <!--<input type="button" value="Edit Transaction" class="button">-->
@@ -181,13 +268,13 @@
                         @if ($transactions->count()) 
                             @foreach($transactions as $transaction)
                                 <tr id={{ $transaction->id }}>
-                                    <td><input type="checkbox"></td>
-                                    <td contenteditable='true'>{{ $transaction->date }}</td>
-                                    <td contenteditable='true'>{{ $transaction->name }}</td>
-                                    <td contenteditable='true'>@if($transaction->category == 'Expense')<span>-</span>@endif<span>£</span>{{ $transaction->amount }}</td>
-                                    <td contenteditable='true'>{{ $transaction->category }}</td>
-                                    <td contenteditable='true'>{{ $transaction->tags }}</td>
-                                    <td onclick="openNav()"><i class="arrow right"></i></td>
+                                    <td><input type="checkbox" name='transaction'></td>
+                                    <td>{{ $transaction->date }}</td>
+                                    <td>{{ $transaction->name }}</td>
+                                    <td>@if($transaction->category == 'Expense')<span>-</span>@endif<span>£</span><span><span class="transaction-amount">{{ $transaction->amount }}</span></td>
+                                    <td><span class="category">{{ $transaction->category }}</span></td>
+                                    <td>{{ $transaction->tags }}</td>
+                                    <td onclick="openEditTransaction('{{ $transaction->id }}')"><i class="arrow right"></i></td>
                                 </tr>
                             @endforeach     
                         @endif

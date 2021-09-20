@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Register</title>
+        <title>Sign up</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -13,13 +13,13 @@
 
     </head>
     <body class="antialiased">
-        <h1> Register </h1>
+        <h1> Sign up </h1>
 
-        <form action="{{ route('register') }}" method="post">
+        <form action="{{ route('signup') }}" method="post">
             @csrf
             <div>
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" placeholder="Your name" class="@error('name') border-red @enderror" value="{{ old('name') }}">
+                <input type="text" name="name" id="name" placeholder="Enter your name" class="@error('name') border-red @enderror" value="{{ old('name') }}">
 
                 @error('name')
                     <div class="text-red">
@@ -30,7 +30,7 @@
 
             <div>
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Your email" class="@error('name') border-red @enderror" value="{{ old('email') }}">
+                <input type="email" name="email" id="email" placeholder="Enter your email" class="@error('name') border-red @enderror" value="{{ old('email') }}">
 
                 @error('email')
                     <div class="text-red">
@@ -41,7 +41,7 @@
 
             <div>
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Your password" class="@error('name') border-red @enderror">
+                <input type="password" name="password" id="password" placeholder="Enter your password" class="@error('name') border-red @enderror">
 
                 @error('password')
                     <div class="text-red">
@@ -61,8 +61,12 @@
                 @enderror
             </div>
 
-            <button type="submit">Register</button>
+            <button type="submit">Sign up</button>
+            
+            <!--<a href="{{ route('/') }}">Home</a>
+            <a href="{{ route('login') }}">Login</a>-->
+
         </form>
-    </form>
+        <span class="form-msg">Have an account? <a href="{{ route('login') }}">Log in</a></span>
     </body>
 </html>
