@@ -53,6 +53,13 @@ Runs the project.
 php artisan serve
 ```
 
+## Screenshots
+
+<img src="./screenshots/profile.png" alt="Image of profile page">
+<img src="./screenshots/editform.png" alt="Image of edit page">
+<img src="./screenshots/login.png" alt="Image of login page">
+<img src="./screenshots/signup.png" alt="Image of profile page">
+
 ## License
 
 Simple Books is released under the GNU General Public License v3 for open-source personal projects.
