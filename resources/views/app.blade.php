@@ -16,7 +16,7 @@
         <h1>Homepage</h1>
 
         @auth 
-            <a href="{{ route('dashboard') }}">Dashboard</a>
+            <a href="{{ route('dashboard') }}" class="greybtn"  >Dashboard</a>
         @endauth
 
         @guest

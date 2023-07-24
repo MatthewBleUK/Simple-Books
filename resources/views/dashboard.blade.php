@@ -24,7 +24,7 @@
                     @csrf
                     <div class="row">
                         <div class="input-container">
-                            <label for="name">Transaction Name: </label><br>
+                            <label for="name">Transaction Name: </label>
                             <input type="text" name="name" class="@error('name') border-red @enderror name" placeholder="Enter a transaction name">
 
                             <div class="text-red">
@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="input-container">
-                            <label for="date">Date: </label><br>
+                            <label for="date">Date: </label>
                             <input type="date" name="date" placeholder="Enter a date" class="date @error('date') border-red @enderror">
                             
                             <div class="text-red">
@@ -52,7 +52,7 @@
 
                     <div class="row">
                         <div class="input-container">
-                            <label for="amount">Amount: </label><br>
+                            <label for="amount">Amount: </label>
                             <input type="text" name="amount" class="@error('amount') border-red @enderror amount" placeholder="Enter a amount">
 
                            
@@ -67,7 +67,7 @@
                         </div>
                         
                         <div class="input-container">
-                            <label for="category">Category: </label><br>
+                            <label for="category">Category: </label>
                             <select name="category" class="category">
                                 <option value="Income">Income</option>
                                 <option value="Expense">Expense</option>
@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="row">
-                        <label for="tags">Tags: </label><br>
+                        <label for="tags">Tags: </label>
                         <input type="text" name="tags" class="@error('tags') border-red @enderror tags" placeholder="Enter a tag">
 
                         <div class="text-red">
@@ -111,7 +111,7 @@
                     <input type="hidden" name="_transaction" id="transaction-id">
                     <div class="row">
                         <div class="input-container">
-                            <label for="name">Transaction Name: </label><br>
+                            <label for="name">Transaction Name: </label>
                             <input type="text" name="name" class="@error('name') border-red @enderror name" placeholder="Enter a transaction name">
 
                             <div class="text-red">
@@ -124,7 +124,7 @@
                         </div>
 
                         <div class="input-container">
-                            <label for="date">Date: </label><br>
+                            <label for="date">Date: </label>
                             <input type="date" name="date" placeholder="Enter a date" class="date @error('date') border-red @enderror">
                             
                             <div class="text-red">
@@ -139,7 +139,7 @@
 
                     <div class="row">
                         <div class="input-container">
-                            <label for="amount">Amount: </label><br>
+                            <label for="amount">Amount: </label>
                             <input type="text" name="amount" class="@error('amount') border-red @enderror amount" placeholder="Enter a amount">
 
                            
@@ -154,7 +154,7 @@
                         </div>
                         
                         <div class="input-container">
-                            <label for="category">Category: </label><br>
+                            <label for="category">Category: </label>
                             <select name="category" class="category">
                                 <option value="Income">Income</option>
                                 <option value="Expense">Expense</option>
@@ -163,7 +163,7 @@
                     </div>
 
                     <div class="row">
-                        <label for="tags">Tags: </label><br>
+                        <label for="tags">Tags: </label>
                         <input type="text" name="tags" class="@error('tags') border-red @enderror tags" placeholder="Enter a tag">
 
                         <div class="text-red">
@@ -190,8 +190,6 @@
         </div>
 
         <div id="main">
-            <!--<h1>Dashboard</h1>
-            <p>Welcome {{ auth()->user()->name }}</p>-->
 
             <div id="nav-bar">
                 <div class="container">
@@ -206,8 +204,6 @@
                          
                             
                             <div id="myDropdown" class="dropdown-content">
-                                <a href="#">Account Settings</a>
-                                
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
                                     <button type="submit" class="sign-out-btn">Sign Out</button>
@@ -286,8 +282,6 @@
                 </div>
             </div>
 
-                       
-        
             <div id="utility-bar">
                 <div class="container">
                     <!--<button class="button">Import Transactions</button>-->

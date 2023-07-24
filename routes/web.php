@@ -33,9 +33,6 @@ Route::delete('/transaction/{id}', [TransactionController::class, 'delete']);
 Route::get('/fetch/{id}', [TransactionController::class, 'fetch']);
 Route::post('/update', [TransactionController::class, 'update']);
 
-
-
-
 Route::get('/', function () 
 {
     return view('app');
