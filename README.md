@@ -2,8 +2,6 @@
 
 Simple Books is a free tool designed for freelancers, sole traders, and small businesses to help make bookkeeping more efficent.
 
-<a href="">Live Demo</a>
-
 ## Key features
 
 -   Self-hosted solution to managing your finance
